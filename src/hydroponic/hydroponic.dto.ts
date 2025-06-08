@@ -13,5 +13,4 @@ export class CreateHydroponicDto {
 
   @IsNumber()
   humidity: number;
-  // Removed invalid property
 }
