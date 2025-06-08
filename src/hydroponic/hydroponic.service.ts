@@ -15,10 +15,10 @@ export class HydroponicsService {
   findAll(from?: string, to?: string): Promise<Hydroponic[]> {
     const query = this.hydroponicsRepository.createQueryBuilder('hydroponic');
     if (from) {
-      query.andWhere('hydroponic.createdAt >= :from', { from });
+      query.andWhere('hydroponic.created_at >= :from', { from });
     }
     if (to) {
-      query.andWhere('hydroponic.createdAt <= :to', { to });
+      query.andWhere('hydroponic.created_at <= :to', { to });
     }
     return query.getMany();
   }
