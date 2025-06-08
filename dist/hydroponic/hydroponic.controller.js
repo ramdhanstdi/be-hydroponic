@@ -21,8 +21,8 @@ let HydroponicController = class HydroponicController {
     constructor(HydroponicsService) {
         this.HydroponicsService = HydroponicsService;
     }
-    findAll() {
-        return this.HydroponicsService.findAll();
+    findAll(from, to) {
+        return this.HydroponicsService.findAll(from, to);
     }
     findOne(id) {
         return this.HydroponicsService.findOne(id);
@@ -37,8 +37,10 @@ let HydroponicController = class HydroponicController {
 exports.HydroponicController = HydroponicController;
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('from')),
+    __param(1, (0, common_1.Query)('to')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
 ], HydroponicController.prototype, "findAll", null);
 __decorate([

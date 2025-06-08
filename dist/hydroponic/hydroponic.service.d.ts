@@ -5,7 +5,7 @@ import { CreateHydroponicDto } from './hydroponic.dto';
 export declare class HydroponicsService {
     private hydroponicsRepository;
     constructor(hydroponicsRepository: Repository<Hydroponic>);
-    findAll(): Promise<Hydroponic[]>;
+    findAll(from?: string, to?: string): Promise<Hydroponic[]>;
     findOne(id: UUID): Promise<Hydroponic | null>;
     remove(id: UUID): Promise<void>;
     create(data: CreateHydroponicDto): Promise<Hydroponic>;

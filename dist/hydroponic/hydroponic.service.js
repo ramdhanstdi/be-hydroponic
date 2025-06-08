@@ -22,8 +22,15 @@ let HydroponicsService = class HydroponicsService {
     constructor(hydroponicsRepository) {
         this.hydroponicsRepository = hydroponicsRepository;
     }
-    findAll() {
-        return this.hydroponicsRepository.find();
+    findAll(from, to) {
+        const query = this.hydroponicsRepository.createQueryBuilder('hydroponic');
+        if (from) {
+            query.andWhere('hydroponic.createdAt >= :from', { from });
+        }
+        if (to) {
+            query.andWhere('hydroponic.createdAt <= :to', { to });
+        }
+        return query.getMany();
     }
     findOne(id) {
         return this.hydroponicsRepository.findOneBy({ id });
