@@ -6,6 +6,7 @@ import {
   ParseUUIDPipe,
   Body,
   Post,
+  Query,
 } from '@nestjs/common';
 import { HydroponicsService } from './hydroponic.service';
 import { Hydroponic } from './hydroponic.entity';
@@ -17,8 +18,11 @@ export class HydroponicController {
   constructor(private readonly HydroponicsService: HydroponicsService) {}
 
   @Get()
-  findAll(): Promise<Hydroponic[]> {
-    return this.HydroponicsService.findAll();
+  findAll(
+    @Query('from') from?: string,
+    @Query('to') to?: string,
+  ): Promise<Hydroponic[]> {
+    return this.HydroponicsService.findAll(from, to);
   }
 
   @Get(':id')
